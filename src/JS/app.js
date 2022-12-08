@@ -108,12 +108,12 @@ function loginvalidation(){
   forename = userinfo[0].forename;
   surname = userinfo[0].surname;
   userID = userinfo[0].userID;
-  Privileges = userinfo.Privileges;
+  userAccess = userinfo[0].userAccess;
 
   console.log(forename)
 
   if(userinfo[0].username){
-    if(Privileges){
+    if(userAccess){
       alert("Welcome Admin!");
       window.location="./index.home.html";
     }else {

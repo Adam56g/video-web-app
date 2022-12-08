@@ -65,7 +65,7 @@ $.each( data, function( key, val ) {
 items.push( "<hr />");
 items.push("<video controls width='320' height='240' controls autoplay src='"+BLOB_ACCOUNT + val["filePath"] +"'type='video/mp4'/></video> <br />")
 items.push( "File : " + val["fileName"] + "<br />");
-items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />");
+items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />" + "Movie Title and Age Rating:" +val["title"] + " Age Rating: "+val["ageRating"] + " Genre:" +val["genre"]+" <br /> "+"Produced and Published by:" +val["producer"] + "Publisher:"+val["publisher"]);
 items.push( "<hr />");
 });
 //Clear the assetlist div

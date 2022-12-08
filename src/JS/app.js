@@ -82,15 +82,15 @@ html: items.join( "" )
 
 function loginvalidation(){
 
-  var nameduser = document.getElementById("username").value;
+  var username  = document.getElementById("username").value;
   var userpass = document.getElementById("userpass").value;
 
   LoginCheck =new FormData();
 
-  LoginCheck.append('username',nameduser)
+  LoginCheck.append('username',username)
   LoginCheck.append('userpass',userpass)
 
-  console.log(nameduser)
+  console.log(username)
   console.log(userpass)
 
   $.ajax({

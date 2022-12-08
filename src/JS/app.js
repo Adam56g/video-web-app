@@ -26,6 +26,14 @@ $(document).ready(function() {
     submitNewAsset();
     
   }); 
+
+  $("#adduser").click(function(){
+
+    //Execute the submit new user function
+    createuser();
+
+    
+  }); 
 });
 
 //A function to submit a new asset to the REST endpoint 

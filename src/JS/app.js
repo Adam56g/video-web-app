@@ -2,6 +2,8 @@
 IUPS = "https://prod-23.uksouth.logic.azure.com:443/workflows/31b91635684d43cb906d4bf288fc3b2c/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=5lD7rCQWpCA9y60YzFbJ2omAhvfXs5GcLTJUz8xzMuc";
 RAI = "https://prod-10.uksouth.logic.azure.com:443/workflows/558123aedeff4f89b7a618f001805a67/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ngcIeXHqfzpXmXW5a7RuVWUVjBoVGV0JQISDJo8H3rY";
 LOGIN_VAL = "https://prod-15.uksouth.logic.azure.com:443/workflows/1c60d493141b433a971365804eaf476d/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=_jrxcIxVa7BV848SS6Yt2jClH02RsTmE-utjZWPvW20";
+DEL_VIDEO = "https://prod-27.uksouth.logic.azure.com/workflows/ffec53fed8a345048a855519a7220263/triggers/manual/paths/invoke/rest/v1/assets/";
+DEL_VIDEO1 = "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=m82WnqXjbIsQ_s2BJIiJxj2nZ-kfVqRhdrZXiYEAiP0";
 
 BLOB_ACCOUNT = "https://blobstorageb00836889.blob.core.windows.net";
 
@@ -68,6 +70,7 @@ items.push("<video controls width='320' height='240' controls autoplay src='"+BL
 items.push( "File : " + val["fileName"] + "<br />");
 items.push( "Uploaded by: " + val["userName"] + " (user id: "+val["userID"]+")<br />" + "Movie Title and Age Rating:" +val["title"] + " Age Rating: "+val["ageRating"] + " Genre:" +val["genre"]+" <br /> "+"Produced and Published by:" +val["producer"] + "Publisher:"+val["publisher"]);
 items.push( "<hr />");
+items.push( '<button type ="button" id="deletevideobutton" class="btn btn-danger"  onclick="del_video(\''+val["id"]+ '\')">delete</button><br/>');
 });
 //Clear the assetlist div
 $('#VideosList').empty();
@@ -79,7 +82,14 @@ html: items.join( "" )
 });
 
 }
-
+function delete_video(id){
+$.ajax({
+  type:"DELETE",
+  url:DEL_VIDEO +id+DEL_VIDEO1,
+}).done(function(){
+  getVideos();
+})
+}
 function loginvalidation(){
 
   var username  = document.getElementById("username").value;
@@ -108,7 +118,7 @@ function loginvalidation(){
   forename = userinfo[0].forename;
   surname = userinfo[0].surname;
   userID = userinfo[0].userID;
-  userAccess = userinfo[0].userAccess;
+  userAccess = userinfo[0].Privileges;
 
   console.log(forename)
 

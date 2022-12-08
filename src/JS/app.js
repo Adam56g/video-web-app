@@ -82,13 +82,13 @@ html: items.join( "" )
 
 function loginvalidation(){
 
-  var nameduser = document.getElementById("student").value;
-  var userpass = document.getElementById("password123").value;
+  var nameduser = document.getElementById("username").value;
+  var userpass = document.getElementById("userpass").value;
 
   LoginCheck =new FormData();
 
-  LoginCheck.append('student',nameduser)
-  LoginCheck.append('password123',userpass)
+  LoginCheck.append('username',nameduser)
+  LoginCheck.append('userpass',userpass)
 
   console.log(nameduser)
   console.log(userpass)

@@ -4,6 +4,7 @@ RAI = "https://prod-10.uksouth.logic.azure.com:443/workflows/558123aedeff4f89b7a
 LOGIN_VAL = "https://prod-15.uksouth.logic.azure.com:443/workflows/1c60d493141b433a971365804eaf476d/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=_jrxcIxVa7BV848SS6Yt2jClH02RsTmE-utjZWPvW20";
 DEL_VIDEO = "https://prod-27.uksouth.logic.azure.com/workflows/ffec53fed8a345048a855519a7220263/triggers/manual/paths/invoke/rest/v1/assets/";
 DEL_VIDEO1 = "?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=m82WnqXjbIsQ_s2BJIiJxj2nZ-kfVqRhdrZXiYEAiP0";
+CREATE_USER = "https://prod-22.uksouth.logic.azure.com/workflows/7f8af50af4254300a6415347b6ce40c8/triggers/manual/paths/invoke/rest/v1/assets?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=COJxlU3RGU5YEjQEuIcveCpQjAK02riES8tuo4RJW3s";
 
 BLOB_ACCOUNT = "https://blobstorageb00836889.blob.core.windows.net";
 
@@ -90,6 +91,29 @@ $.ajax({
   getVideos();
 })
 }
+
+function createuser(){
+  usercreation= new FormData();
+  usercreation.append('username',$('#name').val());
+  usercreation.append('forename',$('#fore_name').val());
+  usercreation.append('surname',$('#sur_name').val());
+  usercreation.append('userpass',$('#user_pass').val());
+  usercreation.append('age',$('#age').val());
+
+  $.ajax({
+    url: CREATE_USER,
+    data: usercreation,
+    cache: false,
+    enctype: 'multipart/form-data',
+    contentType: false,
+    processData: false,
+    type: 'POST',
+    success: function(data){
+    window.location="./login.html";
+    }
+});
+}
+
 function loginvalidation(){
 
   var username  = document.getElementById("username").value;
